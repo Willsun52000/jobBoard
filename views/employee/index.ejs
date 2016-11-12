@@ -1,14 +1,15 @@
 <div class="container">
   <div ng-controller="angEmpController">
-    
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()">Add</button>
+    <br>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()">添加</button>
     <div class="page-header">
-      <ul><ol><input ng-model="searchText"></ol></ul>
-      <ul class="nav nav-tabs">
-        <li ng-class="{true:'active', false:'inactive'}[selectedType=='01']"><a href="" ng-click="selectedType='01'">外包</a></li>
-        <li ng-class="{true:'active', false:'inactive'}[selectedType=='02']"><a href="" ng-click="selectedType='02'">自有项目</a></li>
-        <li ng-class="{true:'active', false:'inactive'}[selectedType=='03']"><a href="" ng-click="selectedType='03'">互联网</a></li>
-        <li ng-class="{true:'active', false:'inactive'}[selectedType=='']"><a href="" ng-click="selectedType=''">其他</a></li>
+      <div><input ng-model="searchText" class="form-control input-lg" placeholder="过滤条件"></div>
+      <br>
+      <ul class="nav nav-tabs nav-justified">
+        <li ng-class="{true:'active', false:'inactive'}[selectedType=='01']"><a href="" ng-click="selectedType='01'"><h3> 外包 </h3></a></li>
+        <li ng-class="{true:'active', false:'inactive'}[selectedType=='02']"><a href="" ng-click="selectedType='02'"><h3> 自有项目 <h3></a></li>
+        <li ng-class="{true:'active', false:'inactive'}[selectedType=='03']"><a href="" ng-click="selectedType='03'"><h3> 互联网 <h3></a></li>
+        <li ng-class="{true:'active', false:'inactive'}[selectedType=='']"><a href="" ng-click="selectedType=''"><h3> 其他 <h3></a></li>
       </ul>
     </div>
     <div class="row">
@@ -16,12 +17,12 @@
         <div class="col-sm-12 col-md-6">
           <div class="thumbnail">
             <div class="caption">
-              <h3 ng-bind="item.title"></h3>
-              <p ng-bind="item.company"></p>
-              <p style="white-space: pre-wrap;" ng-bind="item.jobDesc"></p>
+              <h1 ng-bind="item.title"></h1>
+              <h3 ng-bind="item.company"></h3>
+              <h3 style="white-space: pre-wrap;" ng-bind="item.jobDesc"></h3>
               <p>
-                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)">Edit</button>
-                <button class="btn" ng-click="removeItem(item)">Remove</button>
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)">编辑</button>
+                <button class="btn btn-lg" ng-click="removeItem(item)">删除</button>
               </p>
             </div>
           </div>
@@ -35,18 +36,18 @@
           <form class="modal-body" name="myForm" novalidate>
             
             <div class="form-group">
-              <input type="text" name="title" ng-model="employee.title"  class="form-control" placeholder="职位"/>
+              <input type="text" name="title" ng-model="employee.title"  class="form-control input-lg" placeholder="职位"/>
             </div>
             <div class="form-group">
-              <input type="text" name="company" ng-model="employee.company"  class="form-control" placeholder="公司"/>
+              <input type="text" name="company" ng-model="employee.company"  class="form-control input-lg" placeholder="公司"/>
             </div>
             <div class="form-group">
-              <textarea name="jobDesc" ng-model="employee.jobDesc"  class="form-control" placeholder="职位要求" rows="10" cols="30" required>
+              <textarea name="jobDesc" ng-model="employee.jobDesc"  class="form-control input-lg" placeholder="职位要求" rows="10" cols="30" required>
               </textarea>
-              <div class="alert alert-danger" role="alert" ng-show="myForm.jobDesc.$invalid && myForm.jobDesc.$error.required">职位要求必须输入！</div>
+              <div class="alert alert-danger input-lg" role="alert" ng-show="myForm.jobDesc.$invalid && myForm.jobDesc.$error.required">职位要求必须输入！</div>
             </div>
             <div class="form-group">
-              <select name="type" class="form-control" ng-model="employee.type">
+              <select name="type" class="form-control input-lg" ng-model="employee.type">
                 <option value="">请输入职位类型</option>
                 <option value="01">外包</option>
                 <option value="02">自有项目</option>
@@ -54,8 +55,8 @@
               </select>
             </div>
             <div class="modal-footer">
-              <button class="btn btn-primary" ng-disabled="myForm.jobDesc.$invalid" ng-click="saveItem()">Save</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button class="btn btn-primary btn-lg" ng-disabled="myForm.jobDesc.$invalid" ng-click="saveItem()">保存</button>
+              <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">关闭</button>
             </div>
           </form>
         </div>
