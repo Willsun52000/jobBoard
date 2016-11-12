@@ -29,7 +29,7 @@ $scope.saveItem = function () {
   var emp = $scope.employee;
       if (emp.id.length == 0){
             $http.post('/employee/create', emp).success(function(data) {
-              $scope.items.push(data);
+              $scope.items.unshift(data);
               $scope.displayForm = '';
               removeModal();
             }).
@@ -60,7 +60,7 @@ $scope.editItem = function (data) {
             });
           // }
         };
- 
+      
         $http.get('/employee/find?sort=updatedAt DESC').success(function(data) {
           for (var i = 0; i < data.length; i++) {
             data[i].index = i;
