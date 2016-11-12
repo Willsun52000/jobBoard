@@ -1,8 +1,8 @@
 require.config({
 urlArgs: "bust=" + (new Date()).getTime(),
 paths: {
-'angular': '../vendor/angular/angular',
-'jquery': '../vendor/jquery/jquery',
+'angular': '../vendor/angular/angular.min',
+'jquery': '../vendor/jquery/jquery.min',
 'bootstrapJs': '../vendor/bootstrap/bootstrap'
 },
 /**
