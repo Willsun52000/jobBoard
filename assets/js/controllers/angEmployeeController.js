@@ -61,7 +61,7 @@ $scope.editItem = function (data) {
           // }
         };
  
-        $http.get('/employee/find').success(function(data) {
+        $http.get('/employee/find?sort=updatedAt DESC').success(function(data) {
           for (var i = 0; i < data.length; i++) {
             data[i].index = i;
           }
