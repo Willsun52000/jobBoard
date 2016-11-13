@@ -5,11 +5,11 @@
     <div class="page-header">
       <div><input ng-model="searchText" class="form-control input-lg" placeholder="过滤条件"></div>
       <br>
-      <ul class="nav nav-tabs nav-justified">
+      <ul class="nav nav-tabs">
         <li ng-class="{true:'active', false:'inactive'}[selectedType=='01']"><a href="" ng-click="selectedType='01'"><h3>外包</h3></a></li>
-        <li ng-class="{true:'active', false:'inactive'}[selectedType=='02']"><a href="" ng-click="selectedType='02'"><h3>自有项目<h3></a></li>
-        <li ng-class="{true:'active', false:'inactive'}[selectedType=='03']"><a href="" ng-click="selectedType='03'"><h3>互联网<h3></a></li>
-        <li ng-class="{true:'active', false:'inactive'}[selectedType=='']"><a href="" ng-click="selectedType=''"><h3>其他<h3></a></li>
+        <li ng-class="{true:'active', false:'inactive'}[selectedType=='02']"><a href="" ng-click="selectedType='02'"><h3>自有项目</h3></a></li>
+        <li ng-class="{true:'active', false:'inactive'}[selectedType=='03']"><a href="" ng-click="selectedType='03'"><h3>互联网</h3></a></li>
+        <li ng-class="{true:'active', false:'inactive'}[selectedType=='']"><a href="" ng-click="selectedType=''"><h3>其他</h3></a></li>
       </ul>
     </div>
     <div class="row">
@@ -17,9 +17,9 @@
         <div class="col-sm-12 col-md-6">
           <div class="thumbnail">
             <div class="caption">
-              <h1 ng-bind="item.title"></h1>
-              <h3 ng-bind="item.company"></h3>
-              <h3 style="white-space: pre-wrap;" ng-bind="item.jobDesc"></h3>
+              <h3 ng-bind="item.title"></h3>
+              <p ng-bind="item.company"></p>
+              <p style="white-space: pre-wrap;" ng-bind="item.jobDesc"></p>
               <p>
                 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)"> 编辑 </button>
                 <button class="btn btn-default btn-lg pull-right" ng-click="removeItem(item)"> 删除 </button>
