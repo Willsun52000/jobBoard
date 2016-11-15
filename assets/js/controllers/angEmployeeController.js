@@ -72,5 +72,5 @@ $scope.editItem = function (data) {
           $('.modal').modal('hide');          
       }
  
-    }];
+    }]; 
 });

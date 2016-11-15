@@ -2,6 +2,12 @@
   <div ng-controller="angEmpController">
     <br>
     <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()"> 添加 </button>
+    <span id="qqLoginBtn"></span>
+    <script type="text/javascript">
+    QC.Login({
+    btnId:"qqLoginBtn"    //插入按钮的节点id
+    });
+    </script>
     <div class="page-header">
       <div><input ng-model="searchText" class="form-control input-lg" placeholder="过滤条件"></div>
       <br>
