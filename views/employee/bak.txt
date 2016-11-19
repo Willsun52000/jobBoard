@@ -1,0 +1,12 @@
+
+    <span id="qqLoginBtn"></span>
+    <script type="text/javascript">
+    QC.Login({
+    btnId:"qqLoginBtn"    //插入按钮的节点id
+    });
+    </script>
+
+
+    
+	<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="1105746871" data-redirecturi="http://localhost:1337/employee/index" charset="utf-8"></script>
+	<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" charset="utf-8" data-callback="true" ></script>
