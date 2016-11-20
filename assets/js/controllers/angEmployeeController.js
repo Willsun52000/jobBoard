@@ -8,10 +8,10 @@ function resetItem(){
       jobDesc : '',
       type : '',
       id : ''
-   };              
+   };
    $scope.displayForm = '';
    $scope.selectedType = '01';
-   
+   $scope.like = false;   
 }
 resetItem();
 
@@ -28,7 +28,7 @@ resetItem();
 $scope.saveItem = function () {
   var emp = $scope.employee;
       if (emp.id.length == 0){
-            $http.post('/employee/create', emp).success(function(data) {
+            $http.post('/employee/create', emp, {headers: {'X-CSRF-Token':$scope.csrf}}).success(function(data) {
               $scope.items.unshift(data);
               $scope.displayForm = '';
               removeModal();
@@ -38,7 +38,7 @@ $scope.saveItem = function () {
   });
           }
           else{
-            $http.post('/employee/update/'+ emp.id, emp).success(function(data) {
+            $http.post('/employee/update/'+ emp.id, emp, {headers: {'X-CSRF-Token':$scope.csrf}}).success(function(data) {
               $scope.displayForm = '';
               removeModal();
             }).
@@ -55,11 +55,15 @@ $scope.editItem = function (data) {
  
         $scope.removeItem = function (data) {
           // if (confirm('Do you really want to delete?')){
-            $http['delete']('/employee/' + data.id).success(function() {
+            $http['delete']('/employee/' + data.id, {headers: {'X-CSRF-Token':$scope.csrf}}).success(function() {
               $scope.items.splice($scope.items.indexOf(data), 1);
             });
           // }
         };
+      
+        $http.get('/csrfToken').success(function(data) {
+          $scope.csrf = data._csrf;
+        });
       
         $http.get('/employee/find?sort=updatedAt DESC').success(function(data) {
           for (var i = 0; i < data.length; i++) {

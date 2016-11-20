@@ -1,0 +1,49 @@
+<div class="container">
+	<div ng-controller="angUsrController">
+		<div class="form-signin">
+			<h2 class="form-signin-heading">管理</h2>
+			<div class="form-group">
+				<input type="email" id="inputEmail" class="form-control input-lg" placeholder="邮件地址" required autofocus>
+			</div>
+			<div class="form-group">
+				<input type="password" id="inputPassword" class="form-control input-lg" placeholder="密码" required>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" value="remember-me"> 记住我
+				</label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" ng-click="expression">登录</button>
+			<button class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#myModal" ng-click="editItem()">注册</button>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-show="displayForm">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form class="modal-body" name="myForm" novalidate>
+						
+						<div class="form-group has-feedback">
+							<input type="email" name="email" ng-model="user.email" class="form-control input-lg" placeholder="邮件地址" required autofocus>
+							<span class="glyphicon glyphicon-ok form-control-feedback"
+							ng-show="myForm.email.$dirty && myForm.email.$valid"></span>
+						</div>
+						<div class="form-group has-feedback">
+							<input type="password" name="password" ng-model="user.password" class="form-control input-lg" placeholder="输入密码" required>
+							<span class="glyphicon glyphicon-ok form-control-feedback"
+							ng-show="myForm.password.$dirty && myForm.password.$valid"></span>
+						</div>
+						<div class="form-group has-feedback">
+							<input type="password" name="repeatpassword" ng-model="user.repeatpassword" class="form-control input-lg" required compare={{user.password}} placeholder="重复输入" required>{{user.password}}{{user.repeatpassword}}
+							<span class="glyphicon glyphicon-ok form-control-feedback"
+							ng-show="myForm.repeatpassword.$dirty && myForm.repeatpassword.$valid"></span>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary btn-lg" ng-disabled="myForm.$invalid" ng-click="signup()"> 保存 </button>
+							<button type="button" class="btn btn-default btn-lg" data-dismiss="modal"> 关闭 </button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
