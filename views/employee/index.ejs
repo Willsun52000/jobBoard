@@ -1,9 +1,7 @@
 <div class="container">
   <div ng-controller="angEmpController">
-    <br>
     <div class="page-header">
       <div><input ng-model="searchText" class="form-control input-lg" placeholder="过滤条件"></div>
-      <br>
     </div>
     <div class="row">
       <div ng-repeat="item in items | filter:searchText">
@@ -13,7 +11,7 @@
               <h3 ng-bind="item.title"></h3>
               <p ng-bind="item.company"></p>
               <p style="white-space: pre-wrap;" ng-bind="item.jobDesc"></p>
-              <p ng-bind="item.updatedAt | date: 'yyyy-MM-dd'"></p>
+              <p ng-bind="item.createdAt | date: 'yyyy-MM-dd'"></p>
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ module.exports = {
   //   res.view(null, {
   //       title: "Employee"
   //   });
-  // },
+  // }, 
 	category: function (req, res) {
     res.view(null, {
         title: "Category"

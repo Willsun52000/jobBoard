@@ -20,6 +20,7 @@
               <h3 ng-bind="item.title"></h3><a href="#" style="text-decoration : none" ng-click="like=!like"><i ng-class="{true:'fa fa-star fa-lg', false:'fa fa-star-o fa-lg'}[like]" aria-hidden="true"></i> <span>1,000</span></a>
               <p ng-bind="item.company"></p>
               <p style="white-space: pre-wrap;" ng-bind="item.jobDesc"></p>
+              <p ng-bind="item.createdAt | date: 'yyyy-MM-dd'"></p>
               <p>
                 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)"> 编辑 </button>
                 <button class="btn btn-default btn-lg pull-right" ng-click="removeItem(item)"> 删除 </button>
