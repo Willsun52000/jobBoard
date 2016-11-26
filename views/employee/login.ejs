@@ -3,7 +3,7 @@
 		<div class="form-signin">
 			<h2 class="form-signin-heading">管理</h2>
 			<div class="form-group">
-				<input type="email" id="inputEmail" class="form-control input-lg" placeholder="邮件地址" required autofocus>
+				<input type="userid" id="inputEmail" class="form-control input-lg" placeholder="用户名" required autofocus>
 			</div>
 			<div class="form-group">
 				<input type="password" id="inputPassword" class="form-control input-lg" placeholder="密码" required>
@@ -14,7 +14,7 @@
 				</label>
 			</div>
 			<button class="btn btn-lg btn-primary btn-block" ng-click="expression">登录</button>
-			<button class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#myModal" ng-click="editItem()">注册</button>
+			<button class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#myModal" ng-click="addItem()">注册</button>
 		</div>
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-show="displayForm">
@@ -23,22 +23,31 @@
 					<form class="modal-body" name="myForm" novalidate>
 						
 						<div class="form-group has-feedback">
-							<input type="email" name="email" ng-model="user.email" class="form-control input-lg" placeholder="邮件地址" required autofocus>
-							<span class="glyphicon glyphicon-ok form-control-feedback"
-							ng-show="myForm.email.$dirty && myForm.email.$valid"></span>
+							<input type="text" name="userid" ng-model="user.userid" class="form-control input-lg" placeholder="用户名" required autofocus>
 						</div>
 						<div class="form-group has-feedback">
-							<input type="password" name="password" ng-model="user.password" class="form-control input-lg" placeholder="输入密码" required>
-							<span class="glyphicon glyphicon-ok form-control-feedback"
-							ng-show="myForm.password.$dirty && myForm.password.$valid"></span>
+							<input type="password" name="password" ng-model="user.password" class="form-control input-lg" placeholder="密码" required>
 						</div>
 						<div class="form-group has-feedback">
-							<input type="password" name="repeatpassword" ng-model="user.repeatpassword" class="form-control input-lg" required compare={{user.password}} placeholder="重复输入" required>{{user.password}}{{user.repeatpassword}}
-							<span class="glyphicon glyphicon-ok form-control-feedback"
-							ng-show="myForm.repeatpassword.$dirty && myForm.repeatpassword.$valid"></span>
+							<input type="password" name="repeatpassword" ng-model="user.repeatpassword" class="form-control input-lg" placeholder="确认密码" required>
+						</div>
+						<div class="alert alert-danger" role="alert">
+							<span ng-show="myForm.userid.$dirty">
+								<p></span><span ng-show="myForm.userid.$error.required">请输入用户名</span></p>
+							</span>
+							<span ng-show="myForm.password.$dirty">
+								<p><span ng-show="myForm.password.$error.required">请输入密码</span></p>
+							</span>
+							<span ng-show="myForm.repeatpassword.$dirty">
+								<p><span ng-show="myForm.repeatpassword.$error.required">请输入确认密码</span></p>
+								<p><span ng-show="myForm.repeatpassword.$valid && user.password!=user.repeatpassword">两次密码输入不一致</span></p>
+			 				</span>
+							<span ng-show="user.error">
+								<p><span ng-bind="user.error"></span></p>
+			 				</span>
 						</div>
 						<div class="modal-footer">
-							<button class="btn btn-primary btn-lg" ng-disabled="myForm.$invalid" ng-click="signup()"> 保存 </button>
+							<button class="btn btn-primary btn-lg" ng-disabled="myForm.$invalid || user.password!=user.repeatpassword" ng-click="signup()"> 保存 </button>
 							<button type="button" class="btn btn-default btn-lg" data-dismiss="modal"> 关闭 </button>
 						</div>
 					</form>
