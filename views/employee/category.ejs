@@ -1,9 +1,8 @@
 <div class="container">
   <div ng-controller="angEmpController">
-    <br>
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()"> 添加 </button>
-    <div class="page-header">
-      <div><input ng-model="searchText" class="form-control input-lg" placeholder="过滤条件"></div>
+      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()"> 添加 </button>
+    <div class="page-header" style="margin: 20px 0 0;">
+      <input ng-model="searchText" class="form-control input-lg" placeholder="过滤条件">
       <br>
       <ul class="nav nav-tabs">
         <li ng-class="{true:'active', false:'inactive'}[selectedType=='01']"><a href="" ng-click="selectedType='01'"><h4>外包</h4></a></li>
