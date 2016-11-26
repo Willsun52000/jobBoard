@@ -32,7 +32,7 @@ define(function () {
     $scope.login = function () {
       var user = $scope.user;
       
-      $http.get('/user/find?userid=' + user.userid ＋ ‘&password＝’ ＋ user.password).success(function(data) {
+      $http.get('/user/find?userid=' + user.userid + '&password＝' + user.password).success(function(data) {
         if(data==null){
           user.error = "用户名密码错误";
         }else{
