@@ -1,9 +1,8 @@
 <div class="container">
   <div ng-controller="angEmpController">
-    <br>
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()"> 添加 </button>
-    <div class="page-header">
-      <div><input ng-model="searchText" class="form-control input-lg" placeholder="过滤条件"></div>
+      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()"> 添加 </button>
+    <div class="page-header" style="margin: 20px 0 0;">
+      <input ng-model="searchText" class="form-control input-lg" placeholder="过滤条件">
       <br>
       <ul class="nav nav-tabs">
         <li ng-class="{true:'active', false:'inactive'}[selectedType=='01']"><a href="" ng-click="selectedType='01'"><h4>外包</h4></a></li>
@@ -21,6 +20,7 @@
               <h3 ng-bind="item.title"></h3>
               <p ng-bind="item.company"></p>
               <p style="white-space: pre-wrap;" ng-bind="item.jobDesc"></p>
+              <p ng-bind="item.createdAt | date: 'yyyy-MM-dd'"></p>
               <p>
                 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)"> 编辑 </button>
                 <button class="btn btn-default btn-lg pull-right" ng-click="removeItem(item)"> 删除 </button>
