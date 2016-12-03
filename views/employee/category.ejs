@@ -1,14 +1,14 @@
 <div class="container">
   <div ng-controller="angEmpController">
-      <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()"> 添加 </button>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()"> 添加 </button>
     <div class="page-header" style="margin: 20px 0 0;">
       <input ng-model="searchText" class="form-control input-lg" placeholder="过滤条件">
       <br>
-      <ul class="nav nav-tabs">
-        <li ng-class="{true:'active', false:'inactive'}[selectedType=='01']"><a href="" ng-click="selectedType='01'"><h4>外包</h4></a></li>
-        <li ng-class="{true:'active', false:'inactive'}[selectedType=='02']"><a href="" ng-click="selectedType='02'"><h4>自有项目</h4></a></li>
-        <li ng-class="{true:'active', false:'inactive'}[selectedType=='03']"><a href="" ng-click="selectedType='03'"><h4>互联网</h4></a></li>
-        <li ng-class="{true:'active', false:'inactive'}[selectedType=='']"><a href="" ng-click="selectedType=''"><h4>其他</h4></a></li>
+      <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='01']"><a href="" ng-click="selectedType='01'"><h4>开发、测试岗位 <span class="badge" ng-bind="(items | filter:{type:'01'} | filter:searchText).length"></span></h4></a></li>
+        <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='02']"><a href="" ng-click="selectedType='02'"><h4>BPO岗位 <span class="badge" ng-bind="(items | filter:{type:'02'} | filter:searchText).length"></span></h4></a></li>
+        <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='03']"><a href="" ng-click="selectedType='03'"><h4>外地工作岗位 <span class="badge" ng-bind="(items | filter:{type:'03'} | filter:searchText).length"></span></h4></a></li>
+        <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='']"><a href="" ng-click="selectedType=''"><h4>其他 <span class="badge" ng-bind="(items | filter:{type:'!01'} | filter:{type:'!02'} | filter:{type:'!03'} | filter:searchText).length"></span></h4></a></li>
       </ul>
     </div>
     <div class="row">
@@ -49,10 +49,10 @@
             </div>
             <div class="form-group">
               <select name="type" class="form-control input-lg" ng-model="employee.type">
-                <option value="">请输入职位类型</option>
-                <option value="01">外包</option>
-                <option value="02">自有项目</option>
-                <option value="03">互联网</option>
+                <option value="">请输入职位分类</option>
+                <option value="01">开发、测试岗位</option>
+                <option value="02">BPO岗位</option>
+                <option value="03">外地工作岗位</option>
               </select>
             </div>
             <div class="modal-footer">

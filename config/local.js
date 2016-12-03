@@ -38,11 +38,11 @@ module.exports = {
    * `config/ssl` and dumped your certificate/key files there:               *
    ***************************************************************************/
 
-  // ssl: {
-  //   ca: require('fs').readFileSync(__dirname + './ssl/my_apps_ssl_gd_bundle.crt'),
-  //   key: require('fs').readFileSync(__dirname + '/ssl/key.pem'),
-  //   cert: require('fs').readFileSync(__dirname + '/ssl/cert.pem')
-  // },
+  ssl: {
+    ca: require('fs').readFileSync(__dirname + '/ssl/www.sunruyi.com/Apache/1_root_bundle.crt'),
+    key: require('fs').readFileSync(__dirname + '/ssl/www.sunruyi.com/Apache/3_www.sunruyi.com.key'),
+    cert: require('fs').readFileSync(__dirname + '/ssl/www.sunruyi.com/Apache/2_www.sunruyi.com.crt')
+  },
 
   /***************************************************************************
    * The `port` setting determines which TCP port your app will be           *
@@ -60,7 +60,7 @@ module.exports = {
    * to 80 (http://) or 443 (https://) if you have an SSL certificate        *
    ***************************************************************************/
 
-  // port: process.env.PORT || 1337,
+  port: process.env.PORT || 1337,
 
   /***************************************************************************
    * The runtime "environment" of your Sails app is either typically         *
@@ -80,6 +80,6 @@ module.exports = {
    * 'development' environment.                                              *
    ***************************************************************************/
 
-   // environment: process.env.NODE_ENV || 'development'
+   environment: process.env.NODE_ENV || 'development'
 
 };

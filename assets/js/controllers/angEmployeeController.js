@@ -76,7 +76,7 @@ define(function() {
       $scope.csrf = data._csrf;
     });
 
-    $http.get('/employee/find?sort=createdAt DESC').success(function(data) {
+    $http.get('/employee/find?sort=createdAt DESC&limit=1000').success(function(data) {
       for (var i = 0; i < data.length; i++) {
         data[i].index = i;
       }
