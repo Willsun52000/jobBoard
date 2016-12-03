@@ -3,7 +3,7 @@
     <div class="page-header" style="margin: 0 0 20px;">
       <input ng-model="searchText" class="form-control input-lg" placeholder="过滤条件">
       <br>
-      <ul class="nav nav-tabs nav-justified" role="tablist">
+      <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='01']"><a href="" ng-click="selectedType='01'"><h4>开发、测试岗位 <span class="badge" ng-bind="(items | filter:{type:'01'} | filter:searchText).length"></span></h4></a></li>
         <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='02']"><a href="" ng-click="selectedType='02'"><h4>BPO岗位 <span class="badge" ng-bind="(items | filter:{type:'02'} | filter:searchText).length"></span></h4></a></li>
         <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='03']"><a href="" ng-click="selectedType='03'"><h4>外地工作岗位 <span class="badge" ng-bind="(items | filter:{type:'03'} | filter:searchText).length"></span></h4></a></li>
