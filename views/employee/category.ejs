@@ -5,10 +5,10 @@
       <input ng-model="searchText" class="form-control input-lg" placeholder="过滤条件">
       <br>
       <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='01']"><a href="" ng-click="selectedType='01'"><h4>开发、测试岗位 <span class="badge" ng-bind="(items | filter:{type:'01'} | filter:searchText).length"></span></h4></a></li>
-        <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='02']"><a href="" ng-click="selectedType='02'"><h4>BPO岗位 <span class="badge" ng-bind="(items | filter:{type:'02'} | filter:searchText).length"></span></h4></a></li>
-        <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='03']"><a href="" ng-click="selectedType='03'"><h4>外地工作岗位 <span class="badge" ng-bind="(items | filter:{type:'03'} | filter:searchText).length"></span></h4></a></li>
-        <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='']"><a href="" ng-click="selectedType=''"><h4>其他 <span class="badge" ng-bind="(items | filter:{type:'!01'} | filter:{type:'!02'} | filter:{type:'!03'} | filter:searchText).length"></span></h4></a></li>
+        <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='01']"><a href="" ng-click="selectedType='01'">开发 <span class="badge" ng-bind="(items | filter:{type:'01'} | filter:searchText).length"></span></a></li>
+        <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='02']"><a href="" ng-click="selectedType='02'">BPO <span class="badge" ng-bind="(items | filter:{type:'02'} | filter:searchText).length"></span></a></li>
+        <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='03']"><a href="" ng-click="selectedType='03'">外地 <span class="badge" ng-bind="(items | filter:{type:'03'} | filter:searchText).length"></span></a></li>
+        <li role="presentation" ng-class="{true:'active', false:'inactive'}[selectedType=='']"><a href="" ng-click="selectedType=''">其他 <span class="badge" ng-bind="(items | filter:{type:'!01'} | filter:{type:'!02'} | filter:{type:'!03'} | filter:searchText).length"></span></a></li>
       </ul>
     </div>
     <div class="row">
