@@ -8,35 +8,48 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- <style>
-		*{padding:0;margin:0;-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+		<style>
+		*{padding:0;margin:0;}
 		ul{list-style:none;}
 		.qrbox {overflow:hidden;padding:10px 0;text-align: center;}
 		.qrbox img{ width:100%; }
 		.qrbox .item{float:left; width:35%; margin-left:10%;}
 		.mask{display:none;text-align:center;width:100%;height:100%;position:absolute;left:0;top:0;z-index:1000;background-color:#000;}
 		.mask img{position:absolute;top:50%;left:50%;margin-top:-90px;margin-left:-90px;}
-		</style> -->
+		</style>
 	</header>
 	<body>
 		<%- body %>
-		<!-- <script>
+		<script>
 		var items = document.getElementsByClassName('item');
 		var itemsLength = items.length;
-		var mask = document.getElementById('mask');
-		for(var i=0; i<itemsLength; i++){
+		function getChildren(n, skipMe){
+		var arr = [];
+		for ( ; n; n = n.nextSibling )
+		if ( n.nodeType == 1 && n != skipMe)
+		arr.push( n );
+		return arr;
+		};
+		function getSiblings(n) {
+		return getChildren(n.parentNode.firstChild, n);
+		}
+		for(var i = 0; i<itemsLength; i++){
 		items[i].addEventListener('touchstart', function(){
 		var _self = this;
-		var clnQrImg = this.querySelector('img').cloneNode(true);
-		mask.appendChild(clnQrImg);
-		mask.style.display = 'block';
-		mask.querySelector('img').addEventListener('touchend', function(){
-		mask.style.display = 'none';
-		mask.innerHTML = '';
-		},false);
+		var siblingElem = getSiblings(_self);
+		var siblingElemLength = siblingElem.length;
+		for (var i = 0; i < siblingElemLength; i++) {
+		siblingElem[i].style.visibility = 'hidden';
+		}
+		setTimeout(function(){
+		for (var i = 0; i < siblingElemLength; i++) {
+		siblingElem[i].style.visibility = 'visible';
+		}
+		}, 1000);
+		
 		},false);
 		}
-		</script> -->
+		</script>
 		<script src="/vendor/requirejs/require.js" data-main="/js/main"></script>
 		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260882244'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260882244%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 	</body>
