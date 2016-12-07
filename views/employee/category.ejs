@@ -16,7 +16,10 @@
         <div class="col-sm-12 col-md-6">
           <div class="thumbnail">
             <div class="caption">
-              <!-- <a href="#" style="text-decoration : none" ng-click="like=!like"><i ng-class="{true:'fa fa-star fa-lg', false:'fa fa-star-o fa-lg'}[like]" aria-hidden="true"></i> <span>1,000</span></a> -->
+              <a href="#" style="text-decoration : none" ng-click="like=!like"><i ng-class="{true:'fa fa-star fa-lg', false:'fa fa-star-o fa-lg'}[like]" aria-hidden="true"></i> <span>1,000</span></a>
+              <span class="pull-right">
+              <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
+              </span>
               <h3 ng-bind="item.title"></h3>
               <p ng-bind="item.company"></p>
               <p style="white-space: pre-wrap;" ng-bind="item.jobDesc"></p>
