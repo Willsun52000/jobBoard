@@ -23,30 +23,17 @@
 		<script>
 		var items = document.getElementsByClassName('item');
 		var itemsLength = items.length;
-		function getChildren(n, skipMe){
-		var arr = [];
-		for ( ; n; n = n.nextSibling )
-		if ( n.nodeType == 1 && n != skipMe)
-		arr.push( n );
-		return arr;
-		};
-		function getSiblings(n) {
-		return getChildren(n.parentNode.firstChild, n);
-		}
-		for(var i = 0; i<itemsLength; i++){
+		var mask = document.getElementById('mask');
+		for(var i=0; i<itemsLength; i++){
 		items[i].addEventListener('touchstart', function(){
 		var _self = this;
-		var siblingElem = getSiblings(_self);
-		var siblingElemLength = siblingElem.length;
-		for (var i = 0; i < siblingElemLength; i++) {
-		siblingElem[i].style.visibility = 'hidden';
-		}
-		setTimeout(function(){
-		for (var i = 0; i < siblingElemLength; i++) {
-		siblingElem[i].style.visibility = 'visible';
-		}
-		}, 1000);
-		
+		var clnQrImg = this.querySelector('img').cloneNode(true);
+		mask.appendChild(clnQrImg);
+		mask.style.display = 'block';
+		mask.querySelector('img').addEventListener('touchend', function(){
+		mask.style.display = 'none';
+		mask.innerHTML = '';
+		},false);
 		},false);
 		}
 		</script>
