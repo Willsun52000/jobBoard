@@ -7,11 +7,7 @@
 
 module.exports = {
 
-  attributes: {
-  	title:{
-      type:"string",
-      required:false
-    },      
+  attributes: {    
     company:{
       type:"string",
       required:false
@@ -21,6 +17,10 @@ module.exports = {
       required:true
     },      
     type:{
+      type:"string",
+      required:false
+    },
+    tag:{
       type:"string",
       required:false
     }

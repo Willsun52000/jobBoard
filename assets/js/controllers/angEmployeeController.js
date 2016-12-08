@@ -3,15 +3,22 @@ define(function() {
 
     function resetItem() {
       $scope.employee = {
-        title: '',
         company: '',
         jobDesc: '',
         type: '',
+        tag: '',
         id: ''
       };
+      $scope.user = {
+        userid: '001',
+        preferences: [],
+        id: ''
+      };
+
       $scope.displayForm = '';
       $scope.selectedType = '01';
       $scope.like = false;
+      $scope.preferences = [];
     }
     resetItem();
 
@@ -55,6 +62,11 @@ define(function() {
       }
     };
 
+    $scope.savePreferences = function(btnUpdate) {
+      console.log(btnUpdate);
+      // $scope.user.preferences = $scope.preferences;
+    };
+
     $scope.editItem = function(data) {
       $scope.employee = data;
       $scope.displayForm = true;
@@ -81,6 +93,10 @@ define(function() {
         data[i].index = i;
       }
       $scope.items = data;
+    });
+
+    $http.get('/user/find?userid=001').success(function(data) {
+      $scope.user = data;
     });
 
     function removeModal() {
