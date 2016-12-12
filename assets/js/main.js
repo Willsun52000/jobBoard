@@ -3,7 +3,7 @@ require.config({
 	paths: {
 		'angular': '../vendor/angular/angular.min',
 		'jquery': '../vendor/jquery/jquery.min',
-		'bootstrapJs': '../vendor/bootstrap/bootstrap'
+		'bootstrapJs': '../vendor/bootstrap/js/bootstrap.min'
 	},
 	/**
 	 * for libs that either do not support AMD out of the box, or

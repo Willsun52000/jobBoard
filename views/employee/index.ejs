@@ -24,49 +24,54 @@
           </div>
         </div>
       </div>
-      <ul class="qrbox" id="qrbox">
-        <li class="item">
-          <img src="/images/grcode1.png" alt="小助手">
-          <h3 class="title">小助手</h3>
-        </li>
-        <li class="item">
-          <img src="/images/grcode2.png" alt="公众号">
-          <h3 class="title">公众号</h3>
-        </li>
-      </ul>
-      <div class="mask" id="mask"></div>
-      <!-- Modal -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-show="displayForm">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <form class="modal-body" name="myForm" novalidate>
-              
-              <div class="form-group">
-                <input type="text" name="title" ng-model="employee.title"  class="form-control input-lg" placeholder="职位"/>
-              </div>
-              <div class="form-group">
-                <input type="text" name="company" ng-model="employee.company"  class="form-control input-lg" placeholder="公司"/>
-              </div>
-              <div class="form-group">
-                <textarea name="jobDesc" ng-model="employee.jobDesc"  class="form-control input-lg" placeholder="职位要求" rows="10" cols="30" required>
-                </textarea>
-                <div class="alert alert-danger input-lg" role="alert" ng-show="myForm.jobDesc.$invalid && myForm.jobDesc.$error.required">职位要求必须输入！</div>
-              </div>
-              <div class="form-group" hidden>
-                <select name="type" class="form-control input-lg" ng-model="employee.type">
-                  <option value="">请输入职位类型</option>
-                  <option value="01">外包</option>
-                  <option value="02">自有项目</option>
-                  <option value="03">互联网</option>
-                </select>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-primary btn-lg" ng-disabled="myForm.jobDesc.$invalid" ng-click="saveItem()"> 保存 </button>
-                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal"> 关闭 </button>
-              </div>
-            </form>
-          </div>
+    </div>
+    <ul class="qrbox" id="qrbox">
+      <li class="item">
+        <img src="/images/grcode3.png" alt="内推小助手">
+        <h3 class="title">内推小助手</h3>
+      </li>
+      <li class="item">
+        <img src="/images/grcode1.png" alt="开源小助手">
+        <h3 class="title">开源小助手</h3>
+      </li>
+      <li class="item">
+        <img src="/images/grcode2.png" alt="开源公众号">
+        <h3 class="title">开源公众号</h3>
+      </li>
+    </ul>
+    <div class="mask" id="mask"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-show="displayForm">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form class="modal-body" name="myForm" novalidate>
+            
+            <div class="form-group">
+              <input type="text" name="title" ng-model="employee.title"  class="form-control input-lg" placeholder="职位"/>
+            </div>
+            <div class="form-group">
+              <input type="text" name="company" ng-model="employee.company"  class="form-control input-lg" placeholder="公司"/>
+            </div>
+            <div class="form-group">
+              <textarea name="jobDesc" ng-model="employee.jobDesc"  class="form-control input-lg" placeholder="职位要求" rows="10" cols="30" required>
+              </textarea>
+              <div class="alert alert-danger input-lg" role="alert" ng-show="myForm.jobDesc.$invalid && myForm.jobDesc.$error.required">职位要求必须输入！</div>
+            </div>
+            <div class="form-group" hidden>
+              <select name="type" class="form-control input-lg" ng-model="employee.type">
+                <option value="">请输入职位类型</option>
+                <option value="01">外包</option>
+                <option value="02">自有项目</option>
+                <option value="03">互联网</option>
+              </select>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary btn-lg" ng-disabled="myForm.jobDesc.$invalid" ng-click="saveItem()"> 保存 </button>
+              <button type="button" class="btn btn-default btn-lg" data-dismiss="modal"> 关闭 </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   </div>
+</div>
