@@ -3,6 +3,7 @@
     <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()" ng-show="login"> 添加 </button>
     <span id="qqLoginBtn"></span>
     <script type="text/javascript">
+    QC.Login.signOut();
     QC.Login({
     btnId:"qqLoginBtn"    //插入按钮的节点id
     });

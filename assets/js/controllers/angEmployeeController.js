@@ -13,8 +13,8 @@ define(function() {
       $scope.selectedType = '01';
       $scope.like = false;
     }
-    resetItem();
     $scope.login = QC.Login.check();
+    resetItem();
 
     $scope.validate = function(item) {
       return $scope.selectedType == '' ? item.type == '' : item.type == $scope.selectedType;
