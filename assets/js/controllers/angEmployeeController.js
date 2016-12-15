@@ -14,6 +14,7 @@ define(function() {
       $scope.like = false;
     }
     resetItem();
+    $scope.login = QC.Login.check();
 
     $scope.validate = function(item) {
       return $scope.selectedType == '' ? item.type == '' : item.type == $scope.selectedType;

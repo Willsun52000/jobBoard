@@ -1,6 +1,6 @@
 <div class="container">
   <div ng-controller="angEmpController">
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()"> 添加 </button>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()" ng-show="login"> 添加 </button>
     <span id="qqLoginBtn"></span>
     <script type="text/javascript">
     QC.Login({
@@ -28,8 +28,8 @@
               <p style="white-space: pre-wrap;" ng-bind="item.jobDesc"></p>
               <p ng-bind="item.updatedAt | date: 'yyyy-MM-dd'"></p>
               <p>
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)"> 编辑 </button>
-                <button class="btn btn-default btn-lg pull-right" ng-click="removeItem(item)"> 删除 </button>
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)" ng-show="login"> 编辑 </button>
+                <button class="btn btn-default btn-lg pull-right" ng-click="removeItem(item)" ng-show="login"> 删除 </button>
               </p>
             </div>
           </div>
