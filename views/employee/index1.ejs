@@ -1,13 +1,10 @@
 <div class="container">
   <div ng-controller="angEmpController">
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()" ng-show="login"> 添加 </button>
-    <span id="qqLoginBtn"></span>
     <script type="text/javascript">
-    QC.Login({
-    btnId:"qqLoginBtn"    //插入按钮的节点id
-    });
+    // QC.Login.getMe(function(openId, accessToken){console.log(openId + ";" + accessToken)});
+    // console.log(QC.Login.check());
     </script>
-    <div class="page-header" style="margin: 20px 0 0;">
+    <div class="page-header" style="margin: 0 0 20px;">
       <input ng-model="searchText" class="form-control input-lg" placeholder="过滤条件">
       <br>
       <ul class="nav nav-tabs" role="tablist">
@@ -22,15 +19,11 @@
         <div class="col-sm-12 col-md-6">
           <div class="thumbnail">
             <div class="caption">
-              <!-- <a href="#" style="text-decoration : none" ng-click="like=!like"><i ng-class="{true:'fa fa-star fa-lg', false:'fa fa-star-o fa-lg'}[like]" aria-hidden="true"></i> <span>1,000</span></a> -->
+              <!--  <a href="#" style="text-decoration : none" ng-click="like=!like"><i ng-class="{true:'fa fa-star fa-lg', false:'fa fa-star-o fa-lg'}[like]" aria-hidden="true"></i> <span>1,000</span></a> -->
               <h3 ng-bind="item.title"></h3>
               <p ng-bind="item.company"></p>
               <p style="white-space: pre-wrap;" ng-bind="item.jobDesc"></p>
               <p ng-bind="item.updatedAt | date: 'yyyy-MM-dd'"></p>
-              <p>
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)" ng-show="login"> 编辑 </button>
-                <button class="btn btn-default btn-lg pull-right" ng-click="removeItem(item)" ng-show="login"> 删除 </button>
-              </p>
             </div>
           </div>
         </div>
@@ -68,12 +61,12 @@
               </textarea>
               <div class="alert alert-danger input-lg" role="alert" ng-show="myForm.jobDesc.$invalid && myForm.jobDesc.$error.required">职位要求必须输入！</div>
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
               <select name="type" class="form-control input-lg" ng-model="employee.type">
-                <option value="">请输入职位分类</option>
-                <option value="01">开发、测试岗位</option>
-                <option value="02">BPO岗位</option>
-                <option value="03">外地工作岗位</option>
+                <option value="">请输入职位类型</option>
+                <option value="01">外包</option>
+                <option value="02">自有项目</option>
+                <option value="03">互联网</option>
               </select>
             </div>
             <div class="modal-footer">
