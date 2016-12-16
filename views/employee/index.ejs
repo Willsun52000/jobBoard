@@ -1,7 +1,7 @@
 <div class="container">
   <div ng-controller="angEmpController">
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()" ng-show="login"> 添加 </button>
-    <span id="qqLoginBtn"></span>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()" style="visibility:hidden"> 添加 </button>
+    <span id="qqLoginBtn" class="pull-right"></span>
     <script type="text/javascript">
     //调用QC.Login方法，指定btnId参数将按钮绑定在容器节点中
     QC.Login({
@@ -16,18 +16,25 @@
     var dom = document.getElementById(opts['btnId']),
     _logoutTemplate=[
     //头像
-    '<span><img src="{figureurl}" class="{size_key}"/></span>',
+    '<span><img src="{figureurl_qq_1}" class="{size_key}"/></span>',
     //昵称
-    '<span>{nickname}</span>',
+    '<span><font size="5"> {nickname} </font></span>',
     //退出
-    '<span><a href="javascript:QC.Login.signOut();">退出</a></span>'
+    '<span><a href="javascript:QC.Login.signOut();"><font size="5">退出</font></a></span>'
     ].join("");
     dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
     nickname : QC.String.escHTML(reqData.nickname), //做xss过滤
-    figureurl : reqData.figureurl
+    figureurl_qq_1 : reqData.figureurl_qq_1
     }));
+    var btns = document.getElementsByTagName("button");
+    for(var i=0;i<btns.length;i++){
+    btns[i].style.visibility="visible";
+    }
     }, function(opts){//注销成功
-    console.log('QQ登录 注销成功');
+    var btns = document.getElementsByTagName("button");
+    for(var i=0;i<btns.length;i++){
+    btns[i].style.visibility="hidden";
+    }
     }
     );
     </script>
@@ -52,8 +59,8 @@
               <p style="white-space: pre-wrap;" ng-bind="item.jobDesc"></p>
               <p ng-bind="item.updatedAt | date: 'yyyy-MM-dd'"></p>
               <p>
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)" ng-show="login"> 编辑 </button>
-                <button class="btn btn-default btn-lg pull-right" ng-click="removeItem(item)" ng-show="login"> 删除 </button>
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)" style="visibility:hidden"> 编辑 </button>
+                <button class="btn btn-default btn-lg pull-right" ng-click="removeItem(item)" style="visibility:hidden"> 删除 </button>
               </p>
             </div>
           </div>

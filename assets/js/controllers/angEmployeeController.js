@@ -1,6 +1,5 @@
 define(function() {
   return ['$scope', '$http', function($scope, $http) {
-
     function resetItem() {
       $scope.employee = {
         title: '',
@@ -13,7 +12,6 @@ define(function() {
       $scope.selectedType = '01';
       $scope.like = false;
     }
-    $scope.login = QC.Login.check();
     resetItem();
 
     $scope.validate = function(item) {
