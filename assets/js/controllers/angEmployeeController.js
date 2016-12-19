@@ -1,11 +1,13 @@
 define(function() {
   return ['$scope', '$http', function($scope, $http) {
+    $scope.authorized=false;
     function resetItem() {
       $scope.employee = {
         title: '',
         company: '',
         jobDesc: '',
         type: '',
+        createdBy: '',
         id: ''
       };
       $scope.displayForm = '';
@@ -13,7 +15,12 @@ define(function() {
       $scope.like = false;
     }
     resetItem();
-
+    if(QC.Login.check()){
+      QC.Login.getMe(function(openId, accessToken){ 
+        $scope.authorized=true;
+        $scope.currentUser=openId;
+      });
+    }
     $scope.validate = function(item) {
       return $scope.selectedType == '' ? item.type == '' : item.type == $scope.selectedType;
     }
@@ -25,6 +32,7 @@ define(function() {
 
 
     $scope.saveItem = function() {
+      $scope.employee.createdBy = $scope.currentUser;
       var emp = $scope.employee;
       if (emp.id.length == 0) {
         $http.post('/employee/create', emp, {

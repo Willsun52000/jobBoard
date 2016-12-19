@@ -1,7 +1,7 @@
 <div class="container">
   <div ng-controller="angEmpController">
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()" style="visibility:hidden"> 添加 </button>
-    <span id="qqLoginBtn" class="pull-right"></span>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()" ng-show="authorized" ng-cloak> 添加 </button>
+    <span id="qqLoginBtn" ng-class="{true: 'pull-right', false: ''}[authorized]"></span>
     <script type="text/javascript">
     //调用QC.Login方法，指定btnId参数将按钮绑定在容器节点中
     QC.Login({
@@ -26,15 +26,21 @@
     nickname : QC.String.escHTML(reqData.nickname), //做xss过滤
     figureurl_qq_1 : reqData.figureurl_qq_1
     }));
-    var btns = document.getElementsByTagName("button");
-    for(var i=0;i<btns.length;i++){
-    btns[i].style.visibility="visible";
+    var appElement = document.querySelector('[ng-controller=angEmpController]');
+    var $scope = angular.element(appElement).scope();
+    if(QC.Login.check()){
+    QC.Login.getMe(function(openId, accessToken){
+    $scope.authorized=true;
+    $scope.currentUser=openId;
+    $scope.$apply();
+    });
     }
     }, function(opts){//注销成功
-    var btns = document.getElementsByTagName("button");
-    for(var i=0;i<btns.length;i++){
-    btns[i].style.visibility="hidden";
-    }
+    var appElement = document.querySelector('[ng-controller=angEmpController]');
+    var $scope = angular.element(appElement).scope();
+    $scope.authorized=false;
+    $scope.currentUser='';
+    $scope.$apply();
     }
     );
     </script>
@@ -51,7 +57,7 @@
     <div class="row">
       <div ng-repeat="item in items | filter:validate | filter:searchText">
         <div class="col-sm-12 col-md-6">
-          <div class="thumbnail">
+          <div class="thumbnail" >
             <div class="caption">
               <!-- <a href="#" style="text-decoration : none" ng-click="like=!like"><i ng-class="{true:'fa fa-star fa-lg', false:'fa fa-star-o fa-lg'}[like]" aria-hidden="true"></i> <span>1,000</span></a> -->
               <h3 ng-bind="item.title"></h3>
@@ -59,8 +65,8 @@
               <p style="white-space: pre-wrap;" ng-bind="item.jobDesc"></p>
               <p ng-bind="item.updatedAt | date: 'yyyy-MM-dd'"></p>
               <p>
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)" style="visibility:hidden"> 编辑 </button>
-                <button class="btn btn-default btn-lg pull-right" ng-click="removeItem(item)" style="visibility:hidden"> 删除 </button>
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)" ng-show="authorized&&currentUser==item.createdBy"> 编辑 </button>
+                <button class="btn btn-default btn-lg pull-right" ng-click="removeItem(item)" ng-show="authorized&&currentUser==item.createdBy"> 删除 </button>
               </p>
             </div>
           </div>

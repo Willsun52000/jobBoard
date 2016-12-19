@@ -20,6 +20,11 @@ module.exports = {
     res.view(null, {
         title: "Category"
     });
-  }
+  },
+  index2: function (req, res) {
+    res.view(null, {
+        title: "Index2"
+    });
+  },
 };
 

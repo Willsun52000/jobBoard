@@ -23,6 +23,10 @@ module.exports = {
     type:{
       type:"string",
       required:false
+    },     
+    createdBy:{
+      type:"string",
+      required:false
     }
   }
 };
