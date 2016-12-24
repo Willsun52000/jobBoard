@@ -23,6 +23,10 @@ module.exports = {
     tag:{
       type:"string",
       required:false
+    },
+    likeList:{
+      type:"array",
+      required:false
     }
   }
 };

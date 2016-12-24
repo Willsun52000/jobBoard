@@ -17,7 +17,7 @@ define(function() {
 
       $scope.displayForm = '';
       $scope.selectedType = '01';
-      $scope.like = false;
+      // $scope.like = false;
       $scope.preferences = [];
     }
     resetItem();

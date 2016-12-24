@@ -6,9 +6,9 @@
  */
 
 module.exports = {
-	index: function (req, res) {
+  index: function(req, res) {
     res.view(null, {
-        title: "Employee"
+      title: "Employee"
     });
   },
   // login: function (req, res) {
@@ -16,10 +16,9 @@ module.exports = {
   //       title: "Employee"
   //   });
   // }, 
-	category: function (req, res) {
+  category: function(req, res) {
     res.view(null, {
-        title: "Category"
+      title: "Category"
     });
   }
 };
-
