@@ -1,6 +1,10 @@
 <div class="container">
   <div ng-controller="angEmpController">
-    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()" ng-show="authorized" ng-cloak> 添加 </button>
+    <div class="alert alert-warning alert-dismissible" role="alert" ng-hide="authorized">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>QQ登录后，可以发布，维护，收藏职位</strong>
+    </div>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()" ng-show="authorized" ng-cloak> 发布 </button>
     <span id="qqLoginBtn" ng-class="{true: 'pull-right', false: ''}[authorized]"></span>
     <script type="text/javascript">
     //调用QC.Login方法，指定btnId参数将按钮绑定在容器节点中
@@ -59,7 +63,7 @@
         <div class="col-sm-12 col-md-6">
           <div class="thumbnail" >
             <div class="caption">
-              <!-- <a href="#" style="text-decoration : none" ng-click="like=!like"><i ng-class="{true:'fa fa-star fa-lg', false:'fa fa-star-o fa-lg'}[like]" aria-hidden="true"></i> <span>1,000</span></a> -->
+              <a href="" style="text-decoration : none" ng-click="toggleLike(item)"><i ng-class="{true:'fa fa-star fa-lg', false:'fa fa-star-o fa-lg'}[item.like]" aria-hidden="true" ng-show="authorized"></i> <span ng-bind="item.likeAmt" ng-show="authorized"></span></a>
               <h3 ng-bind="item.title"></h3>
               <p ng-bind="item.company"></p>
               <p style="white-space: pre-wrap;" ng-bind="item.jobDesc"></p>

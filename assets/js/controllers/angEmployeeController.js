@@ -1,6 +1,5 @@
 define(function() {
   return ['$scope', '$http', function($scope, $http) {
-    $scope.authorized=false;
     function resetItem() {
       $scope.employee = {
         title: '',
@@ -15,12 +14,6 @@ define(function() {
       $scope.like = false;
     }
     resetItem();
-    if(QC.Login.check()){
-      QC.Login.getMe(function(openId, accessToken){ 
-        $scope.authorized=true;
-        $scope.currentUser=openId;
-      });
-    }
     $scope.validate = function(item) {
       return $scope.selectedType == '' ? item.type == '' : item.type == $scope.selectedType;
     }
@@ -55,8 +48,7 @@ define(function() {
         }).success(function(data) {
           $scope.displayForm = '';
           removeModal();
-        }).
-        error(function(data, status, headers, config) {
+        }).error(function(data, status, headers, config) {
           alert(data.summary);
         });
       }
@@ -79,16 +71,47 @@ define(function() {
       // }
     };
 
+    $scope.toggleLike = function(data) {
+
+      data.like=!data.like;
+
+      if(data.like){
+        data.likeAmt=data.likeAmt+1;
+        data.likeList.unshift($scope.currentUser);
+      }else{
+        data.likeAmt=data.likeAmt-1;
+        data.likeList.splice(data.likeList.indexOf($scope.currentUser), 1);
+      }
+      $http.post('/employee/update/' + data.id, {likeList:data.likeList}, {
+        headers: {
+          'X-CSRF-Token': $scope.csrf
+        }
+      }).success(function(data) {
+        // console.log(data);
+      }).error(function(data, status, headers, config) {
+        alert(data.summary);
+      });
+    };
+
     $http.get('/csrfToken').success(function(data) {
       $scope.csrf = data._csrf;
     });
 
-    $http.get('/employee/find?sort=updatedAt DESC&limit=1000').success(function(data) {
-      for (var i = 0; i < data.length; i++) {
-        data[i].index = i;
-      }
-      $scope.items = data;
-    });
+    if(QC.Login.check()){
+      QC.Login.getMe(function(openId, accessToken){ 
+        $scope.authorized=true;
+        $scope.currentUser=openId;
+        $http.get('/employee/query?currentUser='+$scope.currentUser).success(function(data) {
+          $scope.items = data;
+        });
+      });
+    }else{
+      $scope.authorized=false;
+      $scope.currentUser='';
+      $http.get('/employee/find?sort=updatedAt DESC&limit=1000').success(function(data) {
+        $scope.items = data;
+      });
+    }
 
     function removeModal() {
       $('.modal').modal('hide');

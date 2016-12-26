@@ -21,9 +21,21 @@ module.exports = {
         title: "Category"
     });
   },
-  index2: function (req, res) {
-    res.view(null, {
-        title: "Index2"
+  query: function (req, res) {
+    Employee.find({sort:'updatedAt DESC', limit:1000}).exec(function (err, data){
+      if (err) {
+        return res.serverError(err);
+      }
+
+      currentUser = req.param('currentUser');
+      for (var i = 0; i < data.length; i++) {
+        if(typeof(data[i].likeList)=="undefined"){
+          data[i].likeList=[];
+        }
+        data[i].like = data[i].likeList.indexOf(currentUser) > -1;
+        data[i].likeAmt = data[i].likeList.length;
+      }
+      return res.json(data);
     });
   },
 };

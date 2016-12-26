@@ -27,6 +27,10 @@ module.exports = {
     createdBy:{
       type:"string",
       required:false
+    },
+    likeList:{
+      type:"array",
+      required:false
     }
   }
 };
