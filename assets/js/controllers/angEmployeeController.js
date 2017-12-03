@@ -25,7 +25,9 @@ define(function() {
 
 
     $scope.saveItem = function() {
-      $scope.employee.createdBy = $scope.currentUser;
+      if (!$scope.employee.createdBy) {
+        $scope.employee.createdBy = $scope.currentUser;
+      }
       var emp = $scope.employee;
       if (emp.id.length == 0) {
         $http.post('/employee/create', emp, {
@@ -108,7 +110,7 @@ define(function() {
     }else{
       $scope.authorized=false;
       $scope.currentUser='';
-      $http.get('/employee/find?sort=updatedAt DESC&limit=1000').success(function(data) {
+      $http.get('/employee/find?sort=updatedAt DESC&limit=500').success(function(data) {
         $scope.items = data;
       });
     }

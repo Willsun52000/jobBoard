@@ -61,7 +61,7 @@
     <div class="row">
       <div ng-repeat="item in items | filter:validate | filter:searchText">
         <div class="col-sm-12 col-md-6">
-          <div class="thumbnail" >
+          <div class="thumbnail">
             <div class="caption">
               <a href="" style="text-decoration : none" ng-click="toggleLike(item)"><i ng-class="{true:'fa fa-star fa-lg', false:'fa fa-star-o fa-lg'}[item.like]" aria-hidden="true" ng-show="authorized"></i> <span ng-bind="item.likeAmt" ng-show="authorized"></span></a>
               <h3 ng-bind="item.title"></h3>
@@ -99,13 +99,13 @@
           <form class="modal-body" name="myForm" novalidate>
             
             <div class="form-group">
-              <input type="text" name="title" ng-model="employee.title"  class="form-control input-lg" placeholder="职位"/>
+              <input type="text" name="title" ng-model="employee.title"  class="form-control input-lg" placeholder="职位（可选）"/>
             </div>
             <div class="form-group">
-              <input type="text" name="company" ng-model="employee.company"  class="form-control input-lg" placeholder="公司"/>
+              <input type="text" name="company" ng-model="employee.company"  class="form-control input-lg" placeholder="公司（可选）"/>
             </div>
             <div class="form-group">
-              <textarea name="jobDesc" ng-model="employee.jobDesc"  class="form-control input-lg" placeholder="职位要求" rows="10" cols="30" required>
+              <textarea name="jobDesc" ng-model="employee.jobDesc"  class="form-control input-lg" placeholder="职位要求（必须）" rows="10" cols="30" required>
               </textarea>
               <div class="alert alert-danger input-lg" role="alert" ng-show="myForm.jobDesc.$invalid && myForm.jobDesc.$error.required">职位要求必须输入！</div>
             </div>

@@ -22,7 +22,7 @@ module.exports = {
     });
   },
   query: function (req, res) {
-    Employee.find({sort:'updatedAt DESC', limit:1000}).exec(function (err, data){
+    Employee.find({sort:'updatedAt DESC', limit:500}).exec(function (err, data){
       if (err) {
         return res.serverError(err);
       }
