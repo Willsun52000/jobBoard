@@ -3,7 +3,7 @@
 免费开源职位发布平台
 
 ## 安装mongodb
-mongoexport -u will -p Accenture319 -d sampledb -c employee -o 0404.json
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-amazon/
 
 ## 安装jobboard
 a [Sails](http://sailsjs.org) application
